@@ -1,0 +1,106 @@
+%META:TOPICINFO{author="micha" comment="reprev" date="1589888712" format="1.1" reprev="2" version="2"}%
+---+!! %TOPIC%
+%FORMFIELD{"Description"}%
+
+%TOC%
+
+---++ Description
+
+This plugin implements hyphenation for various languages. While there are client side javascript implementations - such as [[Foswiki:Extensions][HyphenatorContrib]] - 
+this one here hyhpenates texts on the server side. So why implement yet another hyphenation solution? Here's why.
+
+[[https://github.com/mnater/Hyphenator][Hyphenator.js]] has recently been abandoned and succeeded by yet another javascript package [[https://github.com/mnater/Hyphenopoly][hyphenopoly]].
+Those javascript packages keep changing all too often which is a pity sometimes. The api difference between hyphenator.js and hyphenopoly are so broad that it
+would require a rewrite of !HyphenatorContrib anyway, besides a name change of the package. So implementing another extension was inevitable anyway. !HyphenatorContrib still is
+working just fine. Still, all client side solutions suffer from an initial flicker of the text being reformatted after hyphens have been inserted.
+A text being hyphenated on the backend can be cached if required and does not suffer from flickering html pages being reformatted. That might be the reason why google never really
+followed up on [[https://www.w3.org/TR/css-text-3/#hyphenation][CSS Text Module Level 3]] with regards to hyphenation. It simply does not provide a smooth user experience & rendering performance.
+
+%TOPIC% is based on [[CPAN:TeX::Hyphen][TeX::Hyphen]] which uses [[https://www.tug.org/tex-hyphen/][TeX hyphenation patterns]] available for various languages. 
+
+---++ Usage
+
+Text might be hyphenated using the =%HYPHENATE= makro.
+
+| *Parameter* | *Description* | *Default* |
+| ="..."=, =text="..."= | text to be hyphenated | |
+| =lang="..."= | language of the text to be hyphenated | =CONTENT_LANGUAGE=, current user's language or system default |
+| =hyphen="..."= | character string to be used as as separator of sylables; try =hyphe="-"= to make hyphenation more visible | =&amp;shy;= | 
+| =minlength="..."= | minimum length of a string to be hyphenated | 5 |
+
+Alternatively, you might define a hyphenation area by surrounding text with an HTML element of class =hyphenate=:
+
+<verbatim class="html">
+<div class="hyphenate" lang="..." data-hyphen="..." data-min-length="...">
+...
+</div>
+</verbatim>
+
+The optional =lang= and =data-hyphen= attributes work as described above. Note that =&lt;div class="hyphenate"> ...&lt;/div>= does _not_ apply any additional css properties by default, such as justifying the text.
+This is up to the Foswiki skin, or any other css class assigned to the =div= element.
+
+Within a hyphenation area =&lt;pre> ...&lt;/pre>= elements are _not_ hyphenated. You might explicitly protect a part of the hyphenate area from being processed by adding a =donthyphenate= class to an element:
+
+<verbatim class="html">
+<div class="hyphenate">
+...
+<pre>some code</pre>
+...
+<h2 class="donthyphenate">Don't hyphenate this heading</h2>
+...
+</div>
+</verbatim>
+
+So text in the =...= areas is hyphenated but not the =&lt;pre>= or =&lt;h2>= element.
+
+---++ Examples
+
+%HYPHENATE{"Straßenbahnschienenritzenreiniger" lang="de" hyphen="-"}%
+
+%HYPHENATE{"Incomprehensibilities" lang="en" hyphen="-"}%
+
+<div class="hyphenate" lang="en" id="test1">
+Going forward, our best-of-breed brand will deliver value to low hanging fruit. So we can hit the ground running, we will be dynamically calibrating every best practice in our space? You need to intelligently monetize your enterprises to increase your big data velocity. So we can hit the ground running, we will be dynamically calibrating every best practice in our space. You need to 
+<span> Our business traveller</span>
+intelligently monetize your enterprises to increase your big data velocity. Reliably aligning strategically long-term propositions is crucial to our next-generation dot-bomb. Key players will take ownership of their paradigm shifts by iteratively revolutionizing actionable standpoints. So we can hit the ground running, we will be dynamically calibrating every best practice in our space?
+</div>
+
+<style>
+#test1 {
+   max-width:50em;
+}
+.hyphenate {
+  text-align:justify;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+}
+.donthyphenate {
+  -webkit-hyphens: none; 
+     -moz-hyphens: none; 
+          hyphens: none; }
+</style>
+
+<button onclick="jQuery('#test1').toggleClass('donthyphenate')">Toggle Hyphenation</button>
+
+---++ Installation Instructions
+%$INSTALL_INSTRUCTIONS%
+
+---++ Dependencies
+%$DEPENDENCIES%
+
+---++ Change History
+
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+| 22 Oct 2020 | initial release |
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2020, Michael Daum, All Rights Reserved"}%
+%META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
+%META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%

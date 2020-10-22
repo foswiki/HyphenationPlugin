@@ -1,0 +1,10 @@
+*.swp
+*,v
+igp_*
+/HyphenationPlugin.md5
+/HyphenationPlugin.sha1
+/HyphenationPlugin.tgz
+/HyphenationPlugin.txt
+/HyphenationPlugin.zip
+/HyphenationPlugin_installer
+/HyphenationPlugin_installer.pl
