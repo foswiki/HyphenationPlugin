@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, https://foswiki.org/
 #
-# HyphenationPlugin is Copyright (C) 2020 Michael Daum http://michaeldaumconsulting.com
+# HyphenationPlugin is Copyright (C) 2020-2024 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -162,7 +162,7 @@ sub completePageHandler {
   my $this = shift;
 
   return unless defined $_[0];
-  return unless $_[0] =~ /<(?:div|span)\s+([^>]*?class=["'][^"']*?hyphenate[^>]*?)\s*>/;
+  return unless $_[0] =~ /<(?:div|span|p)\s+([^>]*?class=["'][^"']*?hyphenate[^>]*?)\s*>/;
   return unless $_[1] =~ /Content-type: text\/html/;
 
   _writeDebug("detected hyphenation");

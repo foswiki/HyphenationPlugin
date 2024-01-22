@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, https://foswiki.org/
 #
-# HyphenationPlugin is Copyright (C) 2020 Michael Daum http://michaeldaumconsulting.com
+# HyphenationPlugin is Copyright (C) 2020-2024 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -52,7 +52,6 @@ sub processText {
   $this->{_htmlData} = {};
 
   $this->parse($html);
-
 
   foreach my $item (reverse @{$this->{_textPosList}}) {
 
@@ -111,7 +110,7 @@ sub _start {
     } elsif ($attr->{class} =~ /\bdonthyphenate\b/) {
       $this->{_pauseDepth} = $this->{_depth};
     }
-  } elsif ($tagName eq 'pre') {
+  } elsif ($tagName =~ /^(pre|script|style)$/) {
     $this->{_pauseDepth} = $this->{_depth};
   }
 

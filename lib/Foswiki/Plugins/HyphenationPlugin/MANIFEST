@@ -1,5 +1,6 @@
 !noci
 data/System/HyphenationPlugin.txt 0644
+lib/Foswiki/Configure/Checkers/Plugins/HyphenationPlugin/Enabled.pm 0644
 lib/Foswiki/Plugins/HyphenationPlugin/Config.spec 0644
 lib/Foswiki/Plugins/HyphenationPlugin/Core.pm 0644
 lib/Foswiki/Plugins/HyphenationPlugin/DEPENDENCIES 0644
