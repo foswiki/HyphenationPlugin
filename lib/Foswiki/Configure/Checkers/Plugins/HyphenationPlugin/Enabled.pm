@@ -1,6 +1,6 @@
 # Extension for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# HyphenationPlugin is Copyright (C) 2022-2024 Michael Daum http://michaeldaumconsulting.com
+# HyphenationPlugin is Copyright (C) 2022-2025 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License

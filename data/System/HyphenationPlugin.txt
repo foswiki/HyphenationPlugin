@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1589888712" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1737038027" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -6,7 +6,7 @@
 
 ---++ Description
 
-This plugin implements hyphenation for various languages. While there are client side javascript implementations - such as [[Foswiki:Extensions][HyphenatorContrib]] - 
+This plugin implements hyphenation for various languages. While there are client side javascript implementations - such as [[https://foswiki.org/Extensions][HyphenatorContrib]] - 
 this one here hyhpenates texts on the server side. So why implement yet another hyphenation solution? Here's why.
 
 [[https://github.com/mnater/Hyphenator][Hyphenator.js]] has recently been abandoned and succeeded by yet another javascript package [[https://github.com/mnater/Hyphenopoly][hyphenopoly]].
@@ -92,6 +92,7 @@ intelligently monetize your enterprises to increase your big data velocity. Reli
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  16 Jan 2025 | properly finish the plugin at the end of the session |
 |  22 Jan 2024 | hyphenate &lt;p> elements as well, but not &lt;style> and &lt;script> elements | 
 |  22 Oct 2020 | initial release |
 
@@ -101,7 +102,7 @@ intelligently monetize your enterprises to increase your big data velocity. Reli
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="2020-2024, Michael Daum, All Rights Reserved"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2020-2025, Michael Daum, All Rights Reserved"}%
 %META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
 %META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
 %META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%

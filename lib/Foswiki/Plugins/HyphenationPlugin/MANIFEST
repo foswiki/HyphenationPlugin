@@ -4,6 +4,7 @@ lib/Foswiki/Configure/Checkers/Plugins/HyphenationPlugin/Enabled.pm 0644
 lib/Foswiki/Plugins/HyphenationPlugin/Config.spec 0644
 lib/Foswiki/Plugins/HyphenationPlugin/Core.pm 0644
 lib/Foswiki/Plugins/HyphenationPlugin/DEPENDENCIES 0644
+lib/Foswiki/Plugins/HyphenationPlugin/MANIFEST 0644
 lib/Foswiki/Plugins/HyphenationPlugin/Parser.pm 0644
 lib/Foswiki/Plugins/HyphenationPlugin.pm 0644
 pub/System/HyphenationPlugin/patterns/hyph-af.tex 0644

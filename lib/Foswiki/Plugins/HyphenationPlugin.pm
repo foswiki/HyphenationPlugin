@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, https://foswiki.org/
 #
-# HyphenationPlugin is Copyright (C) 2020-2024 Michael Daum http://michaeldaumconsulting.com
+# HyphenationPlugin is Copyright (C) 2020-2025 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '1.10';
+our $VERSION = '1.11';
 our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = 'Server-side hyphenation service';
 our $LICENSECODE = '%$LICENSECODE%';
@@ -43,6 +43,7 @@ sub getCore {
 }
 
 sub finishPlugin {
+  $core->finish() if defined $core;
   undef $core;
 }
 
