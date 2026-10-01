@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, https://foswiki.org/
 #
-# HyphenationPlugin is Copyright (C) 2020-2025 Michael Daum http://michaeldaumconsulting.com
+# HyphenationPlugin is Copyright (C) 2020-2026 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -120,10 +120,10 @@ sub handleHYPHENATE {
 sub hyphenateText {
   my ($this, $text, $params) = @_;
 
-  #_writeDebug("called hyphenateText()");
+  _writeDebug("called hyphenateText($text)");
 
   my $minLength = $params->{minlength} || $this->{minLength};
-  $text =~ s/(\w{$minLength,})/$this->hyphenateWord($1, $params)/xsmeg;
+  $text =~ s/((?<!&)\w{$minLength,})/$this->hyphenateWord($1, $params)/xsmeg;
 
   #_writeDebug("... result: $text");
   return $text;
@@ -133,6 +133,8 @@ sub hyphenateWord {
   my ($this, $word, $params) = @_;
 
   return '' if $word eq ''; 
+
+  _writeDebug("called hyphenateWord($word)");
 
   my $hyphen = $params->{hyphen} // '&shy;';
   my $lang = $params->{lang} || $params->{language} || Foswiki::Func::getPreferencesValue("CONTENT_LANGUAGE") || $this->{defaultLanguage};
